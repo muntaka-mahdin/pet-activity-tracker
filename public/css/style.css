@@ -1,0 +1,376 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure html and body take full height */
+html, body {
+    height: 100%;
+}
+
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em 0;
+}
+
+.header-content {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.app-title {
+    font-size: 1.5em;
+}
+
+/* Header Navigation */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5em;
+    font-weight: bold;
+}
+
+nav a:first-child {
+    margin-left: 0;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Search Form in Header */
+nav .search-form {
+    display: flex;
+    margin-left: auto;
+    margin-left: 1.5em;
+}
+
+nav .search-form input[type="text"] {
+    padding: 0.5em;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    height: 38px;
+    font-size: 1em;
+}
+
+nav .search-form button {
+    padding: 0.5em 1em;
+    border: none;
+    background-color: #45a049;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    height: 38px;
+    font-size: 1em;
+    margin-top: 0;
+}
+
+nav .search-form button:hover {
+    background-color: #3e8e41;
+}
+
+nav .search-form input[type="text"],
+nav .search-form button {
+    /* Ensure input and button have the same height and alignment */
+    display: flex;
+    align-items: center;
+}
+
+/* Main Content Area */
+.main-content {
+    width: 90%;
+    margin: 2em auto;
+    background-color: white;
+    padding: 2em;
+    border-radius: 8px;
+    flex: 1;
+}
+
+/* Headings */
+h2 {
+    margin-bottom: 1em;
+    color: #4CAF50;
+}
+
+/* Success and Error Messages */
+.success {
+    padding: 0.5em;
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    margin-bottom: 1em;
+    border-radius: 4px;
+}
+
+.error {
+    padding: 0.5em;
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+    margin-bottom: 1em;
+    border-radius: 4px;
+}
+
+.error ul {
+    list-style-type: disc;
+    margin-left: 1.5em;
+}
+
+/* Forms */
+form label {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="date"],
+form textarea {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form textarea {
+    height: 100px;
+}
+
+form button {
+    margin-top: 1em;
+    padding: 0.75em 1.5em;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+form small {
+    display: block;
+    margin-top: 0.5em;
+    color: #666;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.75em 1.5em;
+    background-color: #4CAF50;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn:hover {
+    background-color: #45a049;
+    text-decoration: none;
+    color: white;
+}
+
+.btn:visited {
+    color: white;
+}
+
+.btn:active {
+    background-color: #3e8e41;
+}
+
+.action-buttons a.btn,
+.action-buttons button.btn {
+    margin-right: 1em;
+    min-width: 100px;
+}
+
+.action-buttons button.btn {
+    display: inline-block;
+}
+
+/* Item List */
+.item-list {
+    margin-top: 1em;
+}
+
+.item-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.item-entry {
+    padding: 1em;
+    border-bottom: 1px solid #ccc;
+    transition: background-color 0.2s;
+}
+
+.item-entry:hover {
+    background-color: #f1f1f1;
+}
+
+.item-name {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.item-description {
+    margin-top: 0.5em;
+    color: #666;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 2em;
+    text-align: center;
+    list-style-type: none;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 0.5em 0.75em;
+    margin: 0 0.25em;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.pagination a {
+    background-color: #fff;
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.pagination a:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.pagination span {
+    background-color: #4CAF50;
+    color: #fff;
+    border-color: #4CAF50;
+}
+
+/* Improved Pagination Styling */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination a,
+.pagination span {
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 0.95em;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a {
+    background-color: #e0e0e0;
+    color: #4CAF50;
+}
+
+.pagination a:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.pagination span {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* Show Page Styles */
+.activity-details {
+    margin-top: 1em;
+}
+
+.activity-details p {
+    margin-bottom: 0.75em;
+    line-height: 1.5;
+}
+
+.activity-details strong {
+    display: inline-block;
+    width: 150px;
+    color: #4CAF50;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav a,
+    nav .search-form {
+        margin-left: 0;
+        margin-top: 0.5em;
+    }
+
+    nav .search-form {
+        width: 100%;
+    }
+
+    nav .search-form input[type="text"],
+    nav .search-form button {
+        width: 100%;
+        border-radius: 4px;
+        margin-bottom: 0.5em;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+
+    .pagination a,
+    .pagination span {
+        margin: 5px;
+    }
+}
