@@ -2,100 +2,78 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ActivityRequest;
 use App\Models\Activity;
+use App\Models\Pet;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
-    // Display a listing of activities
     public function index(Request $request)
     {
-        $search = $request->input('search');
+        $filters = $request->only(['search', 'pet', 'type']);
 
-        $query = Activity::query();
+        $activities = Activity::with('pet')
+            ->filter($filters)
+            ->orderByDesc('activity_date')
+            ->orderByDesc('id')
+            ->paginate(10)
+            ->withQueryString();
 
-        if ($search) {
-            $query->where('activity_type', 'like', '%' . $search . '%');
+        return view('activities.index', [
+            'activities' => $activities,
+            'filters' => $filters,
+            'pets' => Pet::orderBy('name')->get(['id', 'name']),
+            'types' => Activity::query()->distinct()->orderBy('activity_type')->pluck('activity_type'),
+        ]);
+    }
+
+    public function create(Request $request)
+    {
+        if (Pet::doesntExist()) {
+            return redirect()->route('pets.create')->with('success', 'Add a pet first, then you can log its activities.');
         }
 
-        $activities = $query->orderBy('activity_date', 'desc')->simplePaginate(6);
-
-        return view('activities.index', compact('activities', 'search'));
-    }
-
-
-    // Show the form for creating a new activity
-    public function create()
-    {
-        return view('activities.create');
-    }
-
-    // Store a newly created activity in storage
-    public function store(Request $request)
-    {
-        $request->validate([
-            'activity_type' => 'required|string|max:255',
-            'activity_date' => [
-                'required',
-                'date',
-                'after_or_equal:' . now()->subMonths(5)->toDateString(),
-                'before_or_equal:' . now()->addYear()->toDateString(),
-            ],
-            'description'   => 'nullable|string',
+        return view('activities.form', [
+            'activity' => new Activity([
+                'pet_id' => $request->integer('pet') ?: null,
+                'activity_date' => now(),
+            ]),
+            'pets' => Pet::orderBy('name')->get(['id', 'name']),
         ]);
-
-        Activity::create($request->all());
-
-        return redirect()->route('activities.index')->with('success', 'Activity created successfully.');
     }
 
-
-    // Display the specified activity
-    public function show($id)
+    public function store(ActivityRequest $request)
     {
-        $activity = Activity::findOrFail($id);
-        return view('activities.show', compact('activity'));
+        $activity = Activity::create($request->validated());
+
+        return redirect()->route('activities.show', $activity)->with('success', 'Activity added.');
     }
 
-    // Show the form for editing the specified activity
-    public function edit($id)
+    public function show(Activity $activity)
     {
-        $activity = Activity::findOrFail($id);
-        return view('activities.edit', compact('activity'));
+        return view('activities.show', ['activity' => $activity->load('pet')]);
     }
 
-    // Update the specified activity in storage
-    public function update(Request $request, $id)
+    public function edit(Activity $activity)
     {
-        $request->validate([
-            'activity_type' => 'required|string|max:255',
-            'activity_date' => [
-                'required',
-                'date',
-                'after_or_equal:' . now()->subMonths(5)->toDateString(),
-                'before_or_equal:' . now()->addYear()->toDateString(),
-            ],
-            'description'   => 'nullable|string',
+        return view('activities.form', [
+            'activity' => $activity,
+            'pets' => Pet::orderBy('name')->get(['id', 'name']),
         ]);
-
-        $activity = Activity::findOrFail($id);
-        $activity->update($request->all());
-
-        return redirect()->route('activities.index')->with('success', 'Activity updated successfully.');
     }
 
-    // Remove the specified activity from storage
-    public function destroy($id)
+    public function update(ActivityRequest $request, Activity $activity)
     {
-        $activity = Activity::findOrFail($id);
+        $activity->update($request->validated());
+
+        return redirect()->route('activities.show', $activity)->with('success', 'Activity updated.');
+    }
+
+    public function destroy(Activity $activity)
+    {
         $activity->delete();
 
-        return redirect()->route('activities.index')->with('success', 'Activity deleted successfully.');
-    }
-
-    // Display the 'About' page
-    public function about()
-    {
-        return view('about');
+        return redirect()->route('activities.index')->with('success', 'Activity deleted.');
     }
 }
