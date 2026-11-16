@@ -1,6 +1,6 @@
 # Pet Activity Tracker
 
-[![Tests](https://github.com/muntaka123/pet-activity-tracker/actions/workflows/tests.yml/badge.svg)](https://github.com/muntaka123/pet-activity-tracker/actions/workflows/tests.yml)
+[![Tests](https://github.com/muntaka-mahdin/pet-activity-tracker/actions/workflows/tests.yml/badge.svg)](https://github.com/muntaka-mahdin/pet-activity-tracker/actions/workflows/tests.yml)
 
 A simple diary for your pets: log walks, meals, grooming, medication and vet visits, plan upcoming ones, and see each pet's routine at a glance. Built with **Laravel 12**, **Blade** and **SQLite**.
 
@@ -53,7 +53,7 @@ A simple diary for your pets: log walks, meals, grooming, medication and vet vis
 You need PHP 8.2 or newer (with `pdo_sqlite`) and [Composer](https://getcomposer.org).
 
 ```bash
-git clone https://github.com/muntaka123/pet-activity-tracker.git
+git clone https://github.com/muntaka-mahdin/pet-activity-tracker.git
 cd pet-activity-tracker
 composer install
 composer run setup    # creates .env, the SQLite database and demo data
@@ -70,6 +70,6 @@ MIT.
 
 ## Author
 
-**Muntaka Mahdin** · [GitHub](https://github.com/muntaka123) · [LinkedIn](https://www.linkedin.com/in/muntaka-mahdin-2a80b8233/)
+**Muntaka Mahdin** · [GitHub](https://github.com/muntaka-mahdin) · [LinkedIn](https://www.linkedin.com/in/muntaka-mahdin-2a80b8233/)
 
-More of my projects: [Crime Lens](https://github.com/muntaka123/crime-lens) · [Hotel cancellation prediction](https://github.com/muntaka123/hotel-cancellation-prediction) · [Card-G](https://github.com/muntaka123/card-g) · [Hand-washing step recognition](https://github.com/muntaka123/hand-washing-steps)
+More of my projects: [Crime Lens](https://github.com/muntaka-mahdin/crime-lens) · [Hotel cancellation prediction](https://github.com/muntaka-mahdin/hotel-cancellation-prediction) · [Card-G](https://github.com/muntaka-mahdin/card-g) · [Hand-washing step recognition](https://github.com/muntaka-mahdin/hand-washing-steps)

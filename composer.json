@@ -1,5 +1,5 @@
 {
-    "name": "muntaka123/pet-activity-tracker",
+    "name": "muntaka-mahdin/pet-activity-tracker",
     "type": "project",
     "description": "Log and plan your pets' walks, meals, grooming and vet visits. Laravel, Blade and SQLite.",
     "keywords": ["laravel", "pets", "crud"],
