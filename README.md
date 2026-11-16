@@ -72,4 +72,4 @@ MIT.
 
 **Muntaka Mahdin** · [GitHub](https://github.com/muntaka123) · [LinkedIn](https://www.linkedin.com/in/muntaka-mahdin-2a80b8233/)
 
-More of my projects: [Crime Lens](https://github.com/muntaka123/crime-lens) · [Hotel cancellation prediction](https://github.com/muntaka123/hotel-cancellation-prediction) · [Card-G](https://github.com/muntaka123/card-g)
+More of my projects: [Crime Lens](https://github.com/muntaka123/crime-lens) · [Hotel cancellation prediction](https://github.com/muntaka123/hotel-cancellation-prediction) · [Card-G](https://github.com/muntaka123/card-g) · [Hand-washing step recognition](https://github.com/muntaka123/hand-washing-steps)
